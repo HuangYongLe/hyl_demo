@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Color</title>
+	<script src="js/react.js"></script>
+	<script src="js/babel.min.js"></script>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #eee;
+		}
+		#container {
+			margin-top: 20px;
+		}
+		.divflex {
+			margin-top: 80px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="container"></div>
+	
+	<script type="text/babel">
+		var Square = React.createClass({
+			render: function () {
+				var squareStyle = {
+					height: 150,
+					padding: 10,
+					borderRadius: '10px 10px 0 0',
+					backgroundColor: this.props.color
+				};
+
+				return (
+					<div style={squareStyle}></div>
+				);
+			}
+		});
+
+		var Label = React.createClass({
+			render: function () {
+				var labelStyle = {
+					fontFamily: 'sans-serif',
+					fontWeight: 'bold',
+					paddingLeft: '10px',
+					lineHeight: '38px',
+					backgroundColor: '#1d1d1d',
+					color: '#eee',
+					borderRadius: '0 0 10px 10px'
+				};
+
+				return (
+					<div style={labelStyle}>
+						<span>{this.props.color}</span>
+					</div>
+				);
+			}
+		});
+
+		var Card = React.createClass({
+
+			render: function () {
+
+				var cartStyle = {
+					height: 200,
+					maxWidth: 150,
+					backgroundColor: '#fff',
+					borderRadius: '10px',
+					flex: 1,
+					margin: '0 20px',
+					WebkitFilter: 'drop-shadow(0px 0px 8px #666)',
+					filter: 'drop-shadow(0px 0px 8px #666)'
+				};
+
+				return (
+					<div style={cartStyle}>
+						<Square color={this.props.color}/>
+						<Label color={this.props.color}/>
+					</div>
+				);
+			}
+		});
+
+		var destination = document.querySelector('#container');
+		React.render(
+			<div>
+				<div className="divflex">
+					<Card color="#282c37"/>
+					<Card color="#9baec8"/>
+					<Card color="#d9e1e8"/>
+					<Card color="#2b90d9"/>
+				</div>
+				<div className="divflex">
+					<Card color="#ff7473"/>
+					<Card color="#ffc952"/>
+					<Card color="#47b8e0"/>
+					<Card color="#34314c"/>
+				</div>
+				<div className="divflex">
+					<Card color="#77AAAD"/>
+					<Card color="#6E7783"/>
+					<Card color="#D8E6E7"/>
+					<Card color="#9DC3C1"/>
+				</div>
+			</div>
+			,
+			destination
+		);
+	</script>
+
+</body>
+</html>
